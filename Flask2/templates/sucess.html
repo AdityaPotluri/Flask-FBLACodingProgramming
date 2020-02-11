@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/bootstrap.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">FBLA Student Manager</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+            <a class="nav-link" href="/">Add Student </a>
+            </li>
+            <li class="nav-item active">
+            <a class="nav-link" action='/EditandView' method='POST' href="/EditandView">View and Edit <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/Analytics">Analytics</a>
+            </li>
+            
+        </ul>
+
+        </div>
+    </nav>
+    <h3>Edit and View Students</h3>
+    
+    <table class="table table-hover" method="GET">
+        <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Student Number</th>
+              <th scope="col">Grade Level</th>
+              <th scope="col">Hours</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        {%for student in Students%}
+        <tr>
+            <th scope="row">{{student.Name}}</th>
+            <td>{{student.StudentNumber}}</td>
+            <td>{{student.Grade}}</td>
+            <td>{{student.Hours}}</td>
+            <td><a href="/update/{{student.id}}" class="btn btn-info btn-sm">Update Row</a></td>
+            <td><a href="/delete/{{student.id}}" class="btn btn-danger btn-sm">Delete Row</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
